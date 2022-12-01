@@ -28,8 +28,7 @@
                     <td th:text="${user.emailAddress}"></td>
                     <td th:switch="${user.role}">
                         <span th:case="'ROLE_ADMIN'">Administrator</span>
-                        <span th:case="'ROLE_EMPLOYEE'">Employee</span>
-                        <span th:case="'ROLE_CUSTOMER'">Customer</span>
+                        <span th:case="'ROLE_USER'">User</span>
                     </td>
                     <td>
                         <a href class="btn btn-outline-primary" th:href="@{~/user/{id}(id=${user.id})}">View</a>

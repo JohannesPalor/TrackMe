@@ -23,8 +23,9 @@ public class SetupDataLoader implements ApplicationListener<ContextRefreshedEven
             return;
 
         createRoleIfNotFound("ROLE_ADMIN");
-        createRoleIfNotFound("ROLE_EMPLOYEE");
-        createRoleIfNotFound("ROLE_CUSTOMER");
+//        createRoleIfNotFound("ROLE_EMPLOYEE");
+//        createRoleIfNotFound("ROLE_CUSTOMER");
+        createRoleIfNotFound("ROLE_USER");
 
         alreadySetup = true;
     }

@@ -8,54 +8,36 @@
 <body>
     <div th:replace="fragments/header :: headerAuthenticated"></div>
     <main>
+
         <div class="container">
             <h1 class="mt-5">Hello, <span th:text="${#authentication.principal.firstName}"/> <span th:text="${#authentication.principal.lastName}"/>!</h1>
-            <H4>Please enter the following details</H4>
-            <form>
-            <div class="form-horizontal">
-                <h4>Basic Information</h4>
-                <hr/>
-                <div class="form-group">
-                    <div class="col-md-5">
-                        <label class="form-label">First Name</label>
-                        <input type="text" class="form-control">
-                    </div>
-                    <div class="col-md-5">
-                        <label class="form-label">Middle Name</label>
-                        <input type="text" class="form-control">
-                    </div>
-                    <div class="col-md-5">
-                        <label class="form-label">Last Name</label>
-                        <input type="text" class="form-control">
-                    </div>
-                    <div class="col-md-5">
-                        <label class="form-label">Age</label>
-                        <input type="number"placeholder="years old" class="form-control">
-                    </div>
-                    <div class="col-md-5">
-                        <label class="form-label">Sex</label><br>
-                        <input type="radio" name="gender" value="female"> Female
-                        <input type="radio" name="gender" value="male"> Male
-                        <input type="radio" name="gender" value="other"> Other
-                    </div> <br>
-                    <div class="col-md-5">
-                        <label class="form-label">Mobile Number</label>
-                        <input type="text"placeholder="09xxxxxxxxx" class="form-control">
-                    </div>
-                    <div class="col-md-5">
-                        <label class="form-label">Current Address</label>
-                        <input type="text" placeholder="Address" class="form-control">
-                    </div>
-                </div>
-                <hr/>
-                <h4>Covid-19</h4>
-                <div class="col-md-5">
-                    <label class="form-label">Covid-19 Positive?</label>
-                    <input type="text" class="form-control">
-                </div>
+            <h1>Coronavirus Tracker Application</h1>
+            <p>This application lists the current number of cases reported across the globe</p>
 
-            </div>
-            </form>
+            <div class="jumbotron">
+                <h1 class="display-4" th:text="${totalReportedCases}"></h1>
+                <p class="lead">Total cases reported as of today</p>
+                <hr class="my-4">
+                <p>
+                    <span>New cases reported since previous day:</span>
+                    <span th:text="${totalNewCases}"></span>
+                </p>
+        </div>
+
+            <table class="table">
+                <tr>
+                    <th>State</th>
+                    <th>Country</th>
+                    <th>Total cases reported</th>
+                    <th>Changes since last day</th>
+                </tr>
+                <tr th:each="locationStat : ${locationStats}">
+                    <td th:text="${locationStat.state}"></td>
+                    <td th:text="${locationStat.country}"></td>
+                    <td th:text="${locationStat.latestTotalCases}">0</td>
+                    <td th:text="${locationStat.diffFromPrevDay}">0</td>
+                </tr>
+            </table>
         </div>
     </main>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>

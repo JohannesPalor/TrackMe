@@ -30,9 +30,8 @@
             <div class="mb-3">
                 <label for="role" class="form-label">User Type</label>
                 <select id="role" class="form-control" th:field="*{role}">
-                    <option selected value="ROLE_EMPLOYEE">Employee</option>
                     <option value="ROLE_ADMIN">Admin</option>
-                    <option value="ROLE_CUSTOMER">Customer</option>
+                    <option value="ROLE_USER">User</option>
                 </select>
             </div>
             <button type="submit" class="btn btn-outline-primary">Create User</button>
